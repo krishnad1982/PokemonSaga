@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C02443E1E7B946D00111842 /* CatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C02443D1E7B946D00111842 /* CatchViewController.swift */; };
 		0C297C5A1E7F85EA0095DA6D /* CoreDataHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C297C591E7F85EA0095DA6D /* CoreDataHelp.swift */; };
+		0CD2E5811E837C1400589E1A /* PokeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD2E5801E837C1400589E1A /* PokeAnnotation.swift */; };
 		0CE08D641E724FD500865431 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE08D631E724FD500865431 /* AppDelegate.swift */; };
 		0CE08D661E724FD500865431 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE08D651E724FD500865431 /* ViewController.swift */; };
 		0CE08D691E724FD500865431 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE08D671E724FD500865431 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		0C02443D1E7B946D00111842 /* CatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchViewController.swift; sourceTree = "<group>"; };
 		0C297C591E7F85EA0095DA6D /* CoreDataHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelp.swift; sourceTree = "<group>"; };
+		0CD2E5801E837C1400589E1A /* PokeAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokeAnnotation.swift; sourceTree = "<group>"; };
 		0CE08D601E724FD500865431 /* PokemonSaga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonSaga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CE08D631E724FD500865431 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CE08D651E724FD500865431 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				0CE08D6A1E724FD500865431 /* PokemonSaga.xcdatamodeld */,
 				0C02443D1E7B946D00111842 /* CatchViewController.swift */,
 				0C297C591E7F85EA0095DA6D /* CoreDataHelp.swift */,
+				0CD2E5801E837C1400589E1A /* PokeAnnotation.swift */,
 			);
 			path = PokemonSaga;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CE08D661E724FD500865431 /* ViewController.swift in Sources */,
+				0CD2E5811E837C1400589E1A /* PokeAnnotation.swift in Sources */,
 				0CE08D641E724FD500865431 /* AppDelegate.swift in Sources */,
 				0C02443E1E7B946D00111842 /* CatchViewController.swift in Sources */,
 				0C297C5A1E7F85EA0095DA6D /* CoreDataHelp.swift in Sources */,
