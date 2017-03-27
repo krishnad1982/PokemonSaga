@@ -26,26 +26,36 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         
         manager.delegate=self
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
-            print("authorised")
-            mapView.showsUserLocation=true
-            manager.startUpdatingLocation()
-            
-            Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { (timer) in
-                if let coord=self.manager.location?.coordinate{
-                    let pokemon=self.allPokemons[Int(arc4random_uniform(UInt32(self.allPokemons.count)))]
-                    let anno=PokeAnnotation(coord: coord, pokemon:pokemon)
-                    
-                    let longi=(Double(arc4random_uniform(200))-100.0)/500000.0
-                    let latti=(Double(arc4random_uniform(200))-100.0)/500000.0
-                    anno.coordinate.latitude+=latti
-                    anno.coordinate.longitude+=longi
-                    self.mapView.addAnnotation(anno)
-                }
-            })
+            initialSetup()
         }
         else{
             manager.requestWhenInUseAuthorization()
         }
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse{
+            initialSetup()
+        }
+    }
+    
+    func initialSetup(){
+        mapView.showsUserLocation=true
+        manager.startUpdatingLocation()
+        
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { (timer) in
+            if let coord=self.manager.location?.coordinate{
+                let pokemon=self.allPokemons[Int(arc4random_uniform(UInt32(self.allPokemons.count)))]
+                let anno=PokeAnnotation(coord: coord, pokemon:pokemon)
+                
+                let longi=(Double(arc4random_uniform(200))-100.0)/500000.0
+                let latti=(Double(arc4random_uniform(200))-100.0)/500000.0
+                anno.coordinate.latitude+=latti
+                anno.coordinate.longitude+=longi
+                self.mapView.addAnnotation(anno)
+            }
+        })
         
     }
     
@@ -72,6 +82,44 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         
         return annoView
         
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        mapView.deselectAnnotation(view.annotation, animated: true)
+        if view.annotation is MKUserLocation{
+            return
+        }
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
+            if let coord=self.manager.location?.coordinate{
+                if MKMapRectContainsPoint(mapView.visibleMapRect, MKMapPointForCoordinate(coord)){
+                    let pokemon=(view.annotation as! PokeAnnotation).pokemon
+                    pokemon.caught=true
+                    (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                    mapView.removeAnnotation(view.annotation!)
+                    
+                    let alertVc=UIAlertController(title: "Pokemon Info", message: "We caught the pokemon \(pokemon.name)", preferredStyle: .alert)
+                    let okAction=UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        self.performSegue(withIdentifier: "PokemonLIst", sender: nil)
+                    })
+                    alertVc.addAction(okAction)
+                    self.present(alertVc, animated: true, completion: {
+                        
+                    })
+                    
+                    
+                }
+                else{
+                    let alertVc=UIAlertController(title: "Pokemon Info", message: "Pokemon is not in the range", preferredStyle: .alert)
+                    let okAction=UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        
+                    })
+                    alertVc.addAction(okAction)
+                    self.present(alertVc, animated: true, completion: {
+                        
+                    })
+                }
+            }
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

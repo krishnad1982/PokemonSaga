@@ -37,7 +37,7 @@
                                 </constraints>
                                 <state key="normal" image="pokeball"/>
                                 <connections>
-                                    <segue destination="rf6-7X-cQT" kind="presentation" id="Vph-aT-L0P"/>
+                                    <segue destination="rf6-7X-cQT" kind="presentation" identifier="PokemonLIst" id="Vph-aT-L0P"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -60,6 +60,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-95" y="65"/>
         </scene>
         <!--Catch View Controller-->
         <scene sceneID="CLH-yY-uhS">
@@ -104,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1y-YP-9PI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="439" y="37"/>
+            <point key="canvasLocation" x="878" y="66"/>
         </scene>
     </scenes>
     <resources>
